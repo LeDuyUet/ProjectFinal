@@ -1,11 +1,8 @@
 <resources>
     <string name="app_name">ProjectFinal</string>
-    <string name="start">Start</string>
-    <string name="goquizz">Go Quizz</string>
-    <string name="firstcontent">Chào mừng bạn đến với trò chơi GoQuizz. \n
-                                Trong trò chơi này, bạn trả lời các câu hỏi theo các chủ đề: Lịch sử, Địa lý, Khoa học, Nghệ thuật,.. \n
-                                Bạn có thể trả lời các câu hỏi ở 2 cấp độ là dễ và khó. \n
-                                Thành tình của bạn giữa các lần chơi sẽ được lưu lại.
-    </string>
-
+    <string-array name="name_quizz">
+        <item name="item1">Địa Lý</item>
+        <item name="item2">Lịch Sử</item>
+        <item name="item3">Khoa Học</item>
+    </string-array>
 </resources>
