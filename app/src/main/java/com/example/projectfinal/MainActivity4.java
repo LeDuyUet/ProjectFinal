@@ -133,6 +133,8 @@ public class MainActivity4 extends AppCompatActivity {
         radioButton4.setText(arrayAnswerD[0]);
         Button button = findViewById(R.id.button_answer);
         Intent intent1 = new Intent(this, MainActivity10.class);
+        intent1.putExtra("keyPosition",position);
+        intent1.putExtra("keyLevel",level);
         button.setOnClickListener(v -> {
             int id = radioGroup.getCheckedRadioButtonId();
             if(id == idAnswer[index]){
@@ -140,6 +142,7 @@ public class MainActivity4 extends AppCompatActivity {
                 if(index == 5){
                     intent1.putExtra("keyScore",index);
                     startActivity(intent1);
+                    radioGroup.clearCheck();
                     return;
                 }
                 textView.setText(arrayTopic[index]);
@@ -151,9 +154,9 @@ public class MainActivity4 extends AppCompatActivity {
             }
             else{
                 intent1.putExtra("keyScore",index);
+                radioGroup.clearCheck();
                 startActivity(intent1);
             }
         });
-
     }
 }

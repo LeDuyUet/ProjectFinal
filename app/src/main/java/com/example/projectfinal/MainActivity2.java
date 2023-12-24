@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
@@ -35,6 +36,16 @@ public class MainActivity2 extends AppCompatActivity {
         listViewQuizz = findViewById(R.id.listQuizz);
         listViewQuizz.setAdapter(listQuizzAdapter);
         Intent intent0 = new Intent(this, MainActivity4.class);
+        Intent intent1 = getIntent();
+        int level = intent1.getIntExtra("keyLevel",-1);
+        int score = intent1.getIntExtra("keyScore",0);
+        TextView textViewScore = findViewById(R.id.textViewScore);
+        if(level == 0){
+            textViewScore.setText(String.valueOf(score)+" pts");
+        }
+        else if(level == 1){
+            textViewScore.setText(String.valueOf(score*2)+" pts");
+        }
         SwitchMaterial switch1 = findViewById(R.id.switch1);
         listViewQuizz.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

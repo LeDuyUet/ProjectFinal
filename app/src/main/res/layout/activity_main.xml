@@ -31,7 +31,10 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="25dp"
             android:layout_marginLeft="25dp"
-            android:text="firstcontent"
+            android:text="Chào mừng bạn đến với trò chơi GoQuiz.
+Trong trò chơi này, bạn  trả lời các câu hỏi theo các chủ đề: Lịch sử, Địa lý, Khoa học, Nghệ thuật,...
+Bạn có thể trả lời các câu hỏi ở 2 cấp độ là dễ và khó.
+Thành tích của bạn giữa các lần chơi sẽ được lưu lại."
             android:textSize="25sp" />
     </ScrollView>
 
