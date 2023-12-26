@@ -142,7 +142,6 @@ public class MainActivity4 extends AppCompatActivity {
                 if(index == 5){
                     intent1.putExtra("keyScore",index);
                     startActivity(intent1);
-                    radioGroup.clearCheck();
                     return;
                 }
                 textView.setText(arrayTopic[index]);
@@ -150,13 +149,12 @@ public class MainActivity4 extends AppCompatActivity {
                 radioButton2.setText(arrayAnswerB[index]);
                 radioButton3.setText(arrayAnswerC[index]);
                 radioButton4.setText(arrayAnswerD[index]);
-                radioGroup.clearCheck();
             }
             else{
                 intent1.putExtra("keyScore",index);
-                radioGroup.clearCheck();
                 startActivity(intent1);
             }
+            radioGroup.clearCheck();
         });
     }
 }

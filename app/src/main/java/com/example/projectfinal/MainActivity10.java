@@ -3,7 +3,9 @@ package com.example.projectfinal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.SyncStateContract;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -33,6 +35,12 @@ public class MainActivity10 extends AppCompatActivity {
             intent1.putExtra("keyPosition",position);
             intent1.putExtra("keyLevel",level);
             startActivity(intent1);
+        });
+        buttonShare.setOnClickListener(v -> {
+            Intent sendIntent =  new Intent(Intent.ACTION_SEND);
+            sendIntent.setType("text/plain");
+            sendIntent.putExtra("keyScore",score);
+            startActivity(sendIntent);
         });
     }
 }
