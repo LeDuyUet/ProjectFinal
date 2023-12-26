@@ -12,7 +12,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginVertical="15dp"
             android:scaleType="fitXY"
-            android:src="@drawable/b4c0e82a_6b49_40aa_820b_41a5afa2824c_900_900"
+            android:src="@drawable/geographical"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <TextView
