@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">ProjectFinal</string>
+    <string name="intro">Chào mừng bạn đến với trò chơi GoQuizz.\n Trong trò chơi này, bạn trả lời các câu hỏi theo các chủ đề: Lịch sử, Địa lý, Khoa học, Nghệ thuật,..\n Bạn có thể trả lời các câu hỏi ở 2 cấp độ là dễ và khó.\n Nếu chọn cấp độ khó, mỗi câu lời đúng bạn sẽ nhận được 2 điểm, còn đối với mức độ dễ mỗi câu trả lời đúng là 1 điểm. \n Thành tích của bạn giữa các lần chơi sẽ được lưu lại.
+    </string>
     <string-array name="name_quizz">
         <item name="item1">Địa Lý</item>
         <item name="item2">Lịch Sử</item>

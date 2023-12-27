@@ -3,6 +3,7 @@ package com.example.projectfinal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -109,6 +110,8 @@ public class MainActivity5 extends AppCompatActivity {
         }
         else{
             buttonLevel.setText("Khó");
+            Button levelbuton = findViewById(R.id.buttonLevel);
+            levelbuton.setBackgroundColor(Color.RED);
             if(Objects.equals(nameTopic, "Khoa Học")){
                 arrayTopic = arrayHardScienceTopic;
                 arrayAnswerA = arrayAnswerHardScienceTopicA;

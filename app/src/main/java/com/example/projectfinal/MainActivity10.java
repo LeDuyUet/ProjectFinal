@@ -38,9 +38,11 @@ public class MainActivity10 extends AppCompatActivity {
         });
         buttonShare.setOnClickListener(v -> {
             Intent sendIntent =  new Intent(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, score);
             sendIntent.setType("text/plain");
-            sendIntent.putExtra("keyScore",score);
-            startActivity(sendIntent);
+//            sendIntent.putExtra("keyScore",score);
+            Intent shareIntent = Intent.createChooser(sendIntent, null);
+            startActivity(shareIntent);
         });
     }
 }

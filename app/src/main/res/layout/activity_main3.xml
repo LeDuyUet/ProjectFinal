@@ -15,7 +15,8 @@
             android:text="Chủ đề"
             android:layout_marginHorizontal="20dp"
             android:layout_marginVertical="15dp"
-            android:textSize="25sp"
+            android:textStyle="bold"
+            android:textSize="28sp"
             />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -28,11 +29,12 @@
             >
             <AutoCompleteTextView
                 android:id="@+id/autoComplete"
-                android:textSize="25sp"
+                android:textSize="15sp"
+                android:enabled="false"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:simpleItems="@array/name_quizz"
-                android:text="From"
+                android:hint="From"
                 />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>

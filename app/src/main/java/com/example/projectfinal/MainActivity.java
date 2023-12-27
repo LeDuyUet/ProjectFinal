@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         int level = intent.getIntExtra("keyLevel",-1);
         int score = intent.getIntExtra("keyScore",0);
         button.setOnClickListener(view -> {
-            Intent intent1 = new Intent(this, MainActivity2.class);
+            Intent intent1 = new Intent( MainActivity.this, MainActivity2.class);
             intent1.putExtra("keyLevel",level);
             intent1.putExtra("keyScore",score);
             startActivity(intent1);

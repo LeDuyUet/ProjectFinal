@@ -2,6 +2,7 @@ package com.example.projectfinal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity {
+
     ArrayList<Quizz> listQuizz;
     ListQuizzAdapter listQuizzAdapter;
     ListView listViewQuizz;
@@ -28,12 +30,15 @@ public class MainActivity2 extends AppCompatActivity {
             startActivity(intent);
         });
         listQuizz = new ArrayList<>();
+
         listQuizz.add(new Quizz("Lịch sử\nCác câu hỏi về sự kiện liên quan đến con người", R.drawable.history,1));
-        listQuizz.add(new Quizz("Địa Lý\nCác câu hỏi về vùng đất, địa hình, dân cư và các hiện tượng trên Trái Đất", R.drawable.geographical,2));
+        listQuizz.add(new Quizz("Địa Lý\nCác câu hỏi về vùng đất, địa hình, dân cư và các hiện tượng trên Trái Đất", R.drawable.geography,2));
         listQuizz.add(new Quizz("Khoa Học\nCác câu hỏi về những định luật, cấu trúc và cách vận hành của thế giới tự nhiên", R.drawable.science,3));
+
         listQuizzAdapter = new ListQuizzAdapter(listQuizz);
         listViewQuizz = findViewById(R.id.listQuizz);
         listViewQuizz.setAdapter(listQuizzAdapter);
+
         Intent intent0 = new Intent(this, MainActivity4.class);
         Intent intent1 = getIntent();
         int level = intent1.getIntExtra("keyLevel",-1);

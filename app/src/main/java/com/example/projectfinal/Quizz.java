@@ -1,5 +1,6 @@
 package com.example.projectfinal;
 
+
 public class Quizz{
     String text;
     int idImage;
