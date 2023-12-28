@@ -17,9 +17,11 @@ import java.util.ArrayList;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    ArrayList<Quizz> listQuizz;
-    ListQuizzAdapter listQuizzAdapter;
+    ArrayList<Subject> listQuizz;
+    SubjectAdapter listQuizzAdapter;
     ListView listViewQuizz;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,12 +32,12 @@ public class MainActivity2 extends AppCompatActivity {
             startActivity(intent);
         });
         listQuizz = new ArrayList<>();
+        listQuizz.add(new Subject("Lịch sử","Các câu hỏi về sự kiện liên quan đến con người",R.drawable.history,1));
+        listQuizz.add(new Subject("Địa lý","Các câu hỏi về vùng đất, địa hình, dân cư và các hiện tượng trên Trái Đất",R.drawable.geography, 2));
+        listQuizz.add(new Subject("Khoa Học","Các câu hỏi về những định luật, cấu trúc và cách vận hành của thế giới tự nhiên", R.drawable.science,3));
 
-        listQuizz.add(new Quizz("Lịch sử\nCác câu hỏi về sự kiện liên quan đến con người", R.drawable.history,1));
-        listQuizz.add(new Quizz("Địa Lý\nCác câu hỏi về vùng đất, địa hình, dân cư và các hiện tượng trên Trái Đất", R.drawable.geography,2));
-        listQuizz.add(new Quizz("Khoa Học\nCác câu hỏi về những định luật, cấu trúc và cách vận hành của thế giới tự nhiên", R.drawable.science,3));
 
-        listQuizzAdapter = new ListQuizzAdapter(listQuizz);
+        listQuizzAdapter = new SubjectAdapter(listQuizz);
         listViewQuizz = findViewById(R.id.listQuizz);
         listViewQuizz.setAdapter(listQuizzAdapter);
 
