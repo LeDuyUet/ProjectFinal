@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.SyncStateContract;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -38,11 +39,13 @@ public class MainActivity10 extends AppCompatActivity {
         });
         buttonShare.setOnClickListener(v -> {
             Intent sendIntent =  new Intent(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, score);
+            Log.i("Value", String.valueOf(score));
+            String value = "Your Score is " + score;
+            sendIntent.putExtra(Intent.EXTRA_TEXT, value);
             sendIntent.setType("text/plain");
-//            sendIntent.putExtra("keyScore",score);
             Intent shareIntent = Intent.createChooser(sendIntent, null);
             startActivity(shareIntent);
         });
+
     }
 }
