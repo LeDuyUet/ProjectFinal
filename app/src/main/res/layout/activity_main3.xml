@@ -29,12 +29,12 @@
             >
             <AutoCompleteTextView
                 android:id="@+id/autoComplete"
-                android:textSize="15sp"
-                android:enabled="false"
+                android:textSize="20sp"
+                android:inputType="none"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:simpleItems="@array/name_quizz"
-                android:hint="From"
+                android:text="From"
                 />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
