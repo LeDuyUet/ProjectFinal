@@ -7,14 +7,16 @@ public class Question {
     private String answerC;
     private String answerD;
     private int correctAnswerId;
+    private String TrueAns;
 
-    public Question(String question, String answerA, String answerB, String answerC, String answerD, int correctAnswerId) {
+    public Question(String question, String answerA, String answerB, String answerC, String answerD, int correctAnswerId, String trueAns) {
         this.question = question;
         this.answerA = answerA;
         this.answerB = answerB;
         this.answerC = answerC;
         this.answerD = answerD;
         this.correctAnswerId = correctAnswerId;
+        TrueAns = trueAns;
     }
 
     public String getQuestion() {
@@ -63,5 +65,13 @@ public class Question {
 
     public void setCorrectAnswerId(int correctAnswerId) {
         this.correctAnswerId = correctAnswerId;
+    }
+
+    public String getTrueAns() {
+        return TrueAns;
+    }
+
+    public void setTrueAns(String trueAns) {
+        TrueAns = trueAns;
     }
 }
