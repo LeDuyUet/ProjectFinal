@@ -38,6 +38,7 @@ public class MainActivity5 extends AppCompatActivity {
         }
         else if(position >=5 && position <= 9){
             buttonLevel.setText("Khó");
+            buttonLevel.setBackgroundColor(Color.RED);
             question = Data.hardQuestion[indexTopic][position-5];
         }
         textViewQuiz.setText(question.getQuestion());
@@ -45,7 +46,7 @@ public class MainActivity5 extends AppCompatActivity {
         Objects.requireNonNull(textInputLayoutB.getEditText()).setText(question.getAnswerB());
         Objects.requireNonNull(textInputLayoutC.getEditText()).setText(question.getAnswerC());
         Objects.requireNonNull(textInputLayoutD.getEditText()).setText(question.getAnswerD());
-        textViewAnswer.setText(question.getTrueAns());
+        textViewAnswer.setText(String.format("Đáp án đúng: %s",question.getTrueAns()) );
     }
     private int chooseIndexTopic(String nameTopic){
         int indexTopic = -1;
