@@ -22,30 +22,37 @@ public class MainActivity3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
+
+        setupQuestionList();
+        setupAutoCompleteTextView();
+    }
+
+    private void setupQuestionList() {
         listQuestion = new ArrayList<>();
-        listQuestion.add(new QuestionQuizz("Câu 1","Cấp độ: Dễ",1));
-        listQuestion.add(new QuestionQuizz("Câu 2","Cấp độ: Dễ",2));
-        listQuestion.add(new QuestionQuizz("Câu 3","Cấp độ: Dễ",3));
-        listQuestion.add(new QuestionQuizz("Câu 4","Cấp độ: Dễ",4));
-        listQuestion.add(new QuestionQuizz("Câu 5","Cấp độ: Dễ",5));
-        listQuestion.add(new QuestionQuizz("Câu 1","Cấp độ: Khó",6));
-        listQuestion.add(new QuestionQuizz("Câu 2","Cấp độ: Khó",7));
-        listQuestion.add(new QuestionQuizz("Câu 3","Cấp độ: Khó",8));
-        listQuestion.add(new QuestionQuizz("Câu 4","Cấp độ: Khó",9));
-        listQuestion.add(new QuestionQuizz("Câu 5","Cấp độ: Khó",10));
+        listQuestion.add(new QuestionQuizz("Câu 1",getString(R.string.question_level_easy),1));
+        listQuestion.add(new QuestionQuizz("Câu 2",getString(R.string.question_level_easy),2));
+        listQuestion.add(new QuestionQuizz("Câu 3",getString(R.string.question_level_easy),3));
+        listQuestion.add(new QuestionQuizz("Câu 4",getString(R.string.question_level_easy),4));
+        listQuestion.add(new QuestionQuizz("Câu 5",getString(R.string.question_level_easy),5));
+        listQuestion.add(new QuestionQuizz("Câu 1",getString(R.string.question_level_hard),6));
+        listQuestion.add(new QuestionQuizz("Câu 2",getString(R.string.question_level_hard),7));
+        listQuestion.add(new QuestionQuizz("Câu 3",getString(R.string.question_level_hard),8));
+        listQuestion.add(new QuestionQuizz("Câu 4",getString(R.string.question_level_hard),9));
+        listQuestion.add(new QuestionQuizz("Câu 5",getString(R.string.question_level_hard),10));
         listQuestionAdapter = new ListQuestionAdapter(listQuestion);
         listViewQuestion = findViewById(R.id.listViewQuestion);
         listViewQuestion.setAdapter(listQuestionAdapter);
+    }
+
+    private void setupAutoCompleteTextView() {
         Intent intent = new Intent(this, MainActivity5.class);
         AutoCompleteTextView autoCompleteTextView = findViewById(R.id.autoComplete);
-        listViewQuestion.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String nameTopic = autoCompleteTextView.getText().toString();
-                intent.putExtra("keyPosition",position);
-                intent.putExtra("keyNameTopic",nameTopic);
-                startActivity(intent);
-            }
+
+        listViewQuestion.setOnItemClickListener((parent, view, position, id) -> {
+            String nameTopic = autoCompleteTextView.getText().toString();
+            intent.putExtra("keyPosition", position);
+            intent.putExtra("keyNameTopic", nameTopic);
+            startActivity(intent);
         });
     }
 }

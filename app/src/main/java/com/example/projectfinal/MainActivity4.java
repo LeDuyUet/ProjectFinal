@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity4 extends AppCompatActivity {
     private int index = 0;
@@ -137,6 +138,10 @@ public class MainActivity4 extends AppCompatActivity {
         intent1.putExtra("keyLevel",level);
         button.setOnClickListener(v -> {
             int id = radioGroup.getCheckedRadioButtonId();
+            if (id == -1) {
+                Toast.makeText(MainActivity4.this, "Vui lòng chọn đáp án.", Toast.LENGTH_SHORT).show();
+                return;
+            }
             if(id == idAnswer[index]){
                 index++;
                 if(index == 5){
