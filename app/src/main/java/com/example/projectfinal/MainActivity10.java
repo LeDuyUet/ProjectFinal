@@ -11,24 +11,24 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity10 extends AppCompatActivity {
-
+    private int numberOfCorrectAnswer;
+    private int position;
+    private int level;
+    private TextView textViewNumberOfTrueAnswer;
+    private Button buttonComplete;
+    private Button buttonPlayAgain;
+    private Button buttonShare;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main10);
-        Intent intent = getIntent();
-        int score = intent.getIntExtra("keyScore",0);
-        int position = intent.getIntExtra("keyPosition",-1);
-        int level = intent.getIntExtra("keyLevel",-1);
-        TextView textView7 = findViewById(R.id.textView7);
-        textView7.setText(String.valueOf(score));
-        Button buttonComplete = findViewById(R.id.buttonComplete);
-        Button buttonPlayAgain = findViewById(R.id.buttonPlayAgain);
-        Button buttonShare = findViewById(R.id.buttonShare);
+        getDataIntend();
+        findViewId();
+        textViewNumberOfTrueAnswer.setText(String.valueOf(numberOfCorrectAnswer));
         buttonComplete.setOnClickListener(v -> {
             Intent intent1 = new Intent(this, MainActivity.class);
             intent1.putExtra("keyLevel",level);
-            intent1.putExtra("keyScore",score);
+            intent1.putExtra("keyScore",numberOfCorrectAnswer);
             startActivity(intent1);
         });
         buttonPlayAgain.setOnClickListener(v -> {
@@ -39,13 +39,23 @@ public class MainActivity10 extends AppCompatActivity {
         });
         buttonShare.setOnClickListener(v -> {
             Intent sendIntent =  new Intent(Intent.ACTION_SEND);
-            Log.i("Value", String.valueOf(score));
-            String value = "Your Score is " + score;
+            Log.i("Value", String.valueOf(numberOfCorrectAnswer));
+            String value = "Your Score is " + numberOfCorrectAnswer;
             sendIntent.putExtra(Intent.EXTRA_TEXT, value);
             sendIntent.setType("text/plain");
             Intent shareIntent = Intent.createChooser(sendIntent, null);
             startActivity(shareIntent);
         });
-
+    }
+    private void getDataIntend(){
+        numberOfCorrectAnswer = getIntent().getIntExtra("keyScore",0);
+        position = getIntent().getIntExtra("keyPosition",-1);
+        level = getIntent().getIntExtra("keyLevel",-1);
+    }
+    private void findViewId(){
+        textViewNumberOfTrueAnswer = findViewById(R.id.textViewNumberOfTrueAnswer);
+        buttonComplete = findViewById(R.id.buttonComplete);
+        buttonPlayAgain = findViewById(R.id.buttonPlayAgain);
+        buttonShare = findViewById(R.id.buttonShare);
     }
 }

@@ -25,17 +25,16 @@ public class MainActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-
-        setupButton();
         setupSubjectList();
-        setupScoreText();
         setupSwitchAndListClick();
+        setupButton();
+        setupScoreText();
     }
 
     private void setupButton() {
         Button button = findViewById(R.id.button);
         button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+            Intent intent = new Intent(this, MainActivity3.class);
             startActivity(intent);
         });
     }
@@ -45,7 +44,6 @@ public class MainActivity2 extends AppCompatActivity {
         listQuizz.add(new Subject("Lịch sử", "Các câu hỏi về sự kiện liên quan đến con người", R.drawable.history, 1));
         listQuizz.add(new Subject("Địa lý","Các câu hỏi về vùng đất, địa hình, dân cư và các hiện tượng trên Trái Đất",R.drawable.geography, 2));
         listQuizz.add(new Subject("Khoa Học","Các câu hỏi về những định luật, cấu trúc và cách vận hành của thế giới tự nhiên", R.drawable.science,3));
-
         listQuizzAdapter = new SubjectAdapter(listQuizz);
         listViewQuizz = findViewById(R.id.listQuizz);
         listViewQuizz.setAdapter(listQuizzAdapter);

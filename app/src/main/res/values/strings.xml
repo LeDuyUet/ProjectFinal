@@ -5,8 +5,8 @@
     <string name="question_level_easy">Cấp độ: Dễ</string>
     <string name="question_level_hard">Cấp độ: Khó</string>
     <string-array name="name_quizz">
-        <item name="item1">Địa Lý</item>
-        <item name="item2">Lịch Sử</item>
+        <item name="item1">Lịch Sử</item>
+        <item name="item2">Địa Lý</item>
         <item name="item3">Khoa Học</item>
     </string-array>
 </resources>

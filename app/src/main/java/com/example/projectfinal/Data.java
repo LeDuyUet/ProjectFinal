@@ -38,14 +38,14 @@ public class Data {
                 "Hình vuông", "Hình tròn", "Hình elip", "Hình tam giác", R.id.radio_3,"Hình elip")
                 }};
 
-        public static Question[][] EasyQuestion = {
+        public static Question[][] easyQuestion = {
                 {
                         new Question("Cuộc khủng hoảng tên lửa Cuba diễn ra vào năm?",
                                 "1960", "1961", "1962", "1963", R.id.radio_3, "1962"),
                         new Question("Hiệp định Giơ-ne-vơ được ký kết vào năm nào?",
                                 "1954", "1955", "1956", "1957", R.id.radio_1, "1954"),
                         new Question("Quốc gia đầu tiên trên thế giới là gì?",
-                                "Ai Cập", "Lưỡng Hà", "Hy Lạp cổ đại", " Trung Quốc cổ đại", R.id.radio_2, "Lưỡng Hà"),
+                                "Ai Cập", "Lưỡng Hà", "Hy Lạp cổ đại", "Trung Quốc cổ đại", R.id.radio_2, "Lưỡng Hà"),
                         new Question("Nạn đói Việt Nam diễn ra vào năm bao nhiêu?",
                                 "1954", "1946", "1938", "1945", R.id.radio_4, "1945"),
                         new Question("Cuộc khởi nghĩa nào dưới đây đánh dấu sự chấm dứt ách đô hộ của nhà Minh ở Việt Nam?",

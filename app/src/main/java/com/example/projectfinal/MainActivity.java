@@ -6,18 +6,16 @@ import android.os.Bundle;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-
+    private int level;
+    private int score;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        intent = getIntent();
+        getDataIntent();
         Button button = findViewById(R.id.buttonStart);
-
-        Intent intent = getIntent();
-        int level = intent.getIntExtra("keyLevel", -1);
-        int score = intent.getIntExtra("keyScore", 0);
-
         button.setOnClickListener(view -> openMainActivity2(level, score));
     }
 
@@ -26,5 +24,9 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("keyLevel", level);
         intent.putExtra("keyScore", score);
         startActivity(intent);
+    }
+    private void getDataIntent(){
+        level = intent.getIntExtra("keyLevel", -1);
+        score = intent.getIntExtra("keyScore", 0);
     }
 }
