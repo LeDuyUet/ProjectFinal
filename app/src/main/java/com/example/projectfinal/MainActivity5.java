@@ -3,62 +3,47 @@ package com.example.projectfinal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.AutoCompleteTextView;
+import android.widget.ListView;
 
-import com.google.android.material.textfield.TextInputLayout;
-
-import java.util.List;
-import java.util.Objects;
+import java.util.ArrayList;
 
 public class MainActivity5 extends AppCompatActivity {
-    private Question question;
-
-    private int indexTopic;
+    ArrayList<QuestionQuizz> listQuestion;
+    ListQuestionAdapter listQuestionAdapter;
+    ListView listViewQuestion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main5);
-        Intent intent = getIntent();
-        String nameTopic = intent.getStringExtra("keyNameTopic");
-        int position = intent.getIntExtra("keyPosition",-1);
-        Button buttonLevel = findViewById(R.id.buttonLevel);
-        TextView textViewQuiz = findViewById(R.id.nameQuizz);
-        TextInputLayout textInputLayoutA = findViewById(R.id.answerA);
-        TextInputLayout textInputLayoutB = findViewById(R.id.answerB);
-        TextInputLayout textInputLayoutC = findViewById(R.id.answerC);
-        TextInputLayout textInputLayoutD = findViewById(R.id.answerD);
-        TextView textViewAnswer = findViewById(R.id.answerTrue);
-        indexTopic = chooseIndexTopic(nameTopic);
-        if(position >= 0 && position <= 4){
-            buttonLevel.setText("Dễ");
-            question = Data.easyQuestion[indexTopic][position];
-        }
-        else if(position >=5 && position <= 9){
-            buttonLevel.setText("Khó");
-            buttonLevel.setBackgroundColor(Color.RED);
-            question = Data.hardQuestion[indexTopic][position-5];
-        }
-        textViewQuiz.setText(question.getQuestion());
-        Objects.requireNonNull(textInputLayoutA.getEditText()).setText(question.getAnswerA());
-        Objects.requireNonNull(textInputLayoutB.getEditText()).setText(question.getAnswerB());
-        Objects.requireNonNull(textInputLayoutC.getEditText()).setText(question.getAnswerC());
-        Objects.requireNonNull(textInputLayoutD.getEditText()).setText(question.getAnswerD());
-        textViewAnswer.setText(String.format("Đáp án đúng: %s",question.getTrueAns()) );
+        setContentView(R.layout.screen_5);
+        setupQuestionList();
+        setupAutoCompleteTextView();
     }
-    private int chooseIndexTopic(String nameTopic){
-        int indexTopic = -1;
-        if(Objects.equals(nameTopic, "Lịch Sử")){
-            indexTopic = 0;
-        }
-        else if(Objects.equals(nameTopic, "Địa Lý")){
-            indexTopic = 1;
-        }
-        else if(Objects.equals(nameTopic, "Khoa Học")){
-            indexTopic = 2;
-        }
-        return indexTopic;
+    private void setupQuestionList() {
+        listQuestion = new ArrayList<>();
+        listQuestion.add(new QuestionQuizz("Câu 1",getString(R.string.question_level_easy),1));
+        listQuestion.add(new QuestionQuizz("Câu 2",getString(R.string.question_level_easy),2));
+        listQuestion.add(new QuestionQuizz("Câu 3",getString(R.string.question_level_easy),3));
+        listQuestion.add(new QuestionQuizz("Câu 4",getString(R.string.question_level_easy),4));
+        listQuestion.add(new QuestionQuizz("Câu 5",getString(R.string.question_level_easy),5));
+        listQuestion.add(new QuestionQuizz("Câu 1",getString(R.string.question_level_hard),6));
+        listQuestion.add(new QuestionQuizz("Câu 2",getString(R.string.question_level_hard),7));
+        listQuestion.add(new QuestionQuizz("Câu 3",getString(R.string.question_level_hard),8));
+        listQuestion.add(new QuestionQuizz("Câu 4",getString(R.string.question_level_hard),9));
+        listQuestion.add(new QuestionQuizz("Câu 5",getString(R.string.question_level_hard),10));
+        listQuestionAdapter = new ListQuestionAdapter(listQuestion);
+        listViewQuestion = findViewById(R.id.listViewQuestion);
+        listViewQuestion.setAdapter(listQuestionAdapter);
+    }
+    private void setupAutoCompleteTextView() {
+        Intent intent = new Intent(this, MainActivity7.class);
+        AutoCompleteTextView autoCompleteTextView = findViewById(R.id.autoComplete);
+        listViewQuestion.setOnItemClickListener((parent, view, position, id) -> {
+            String nameTopic = autoCompleteTextView.getText().toString();
+            intent.putExtra("keyPosition", position);
+            intent.putExtra("keyNameTopic", nameTopic);
+            startActivity(intent);
+        });
     }
 }

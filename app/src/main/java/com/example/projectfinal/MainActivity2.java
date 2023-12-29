@@ -23,7 +23,7 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.screen_2);
         setupButton();
         setupSubjectList();
         setupScoreText();
@@ -33,7 +33,7 @@ public class MainActivity2 extends AppCompatActivity {
     private void setupButton() {
         Button button = findViewById(R.id.button);
         button.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity2.this, MainActivity3.class);
+            Intent intent = new Intent(this, MainActivity5.class);
             startActivity(intent);
         });
     }
@@ -63,7 +63,7 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
     private void setupSwitchAndListClick() {
-        Intent intent0 = new Intent(this, MainActivity4.class);
+        Intent intent0 = new Intent(this, MainActivity3.class);
         SwitchMaterial switch1 = findViewById(R.id.switch1);
         listViewQuizz.setOnItemClickListener((parent, view, position, id) -> {
             intent0.putExtra("keyPosition", position);
