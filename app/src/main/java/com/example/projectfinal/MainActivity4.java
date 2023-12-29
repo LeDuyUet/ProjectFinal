@@ -4,162 +4,164 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class MainActivity4 extends AppCompatActivity {
     private int index = 0;
-    private static final int[] idAnswerEasyGeography = {R.id.radio_2,R.id.radio_3,R.id.radio_3,R.id.radio_1,R.id.radio_2};
-    private static final String[] arrayAnswerEasyGeographicalTopicA = {"Vũ trụ","1","Đại Tây Dương","Châu Á","Sông Amazon"};
-    private static final String[] arrayAnswerEasyGeographicalTopicB = {"Trái đất","2","Ấn Độ Dương","Châu Âu","Sông Nile"};
-    private static final String[] arrayAnswerEasyGeographicalTopicC = {"Mặt trăng","3","Thái Bình Dương","Châu Mỹ","Sông Mississippi"};
-    private static final String[] arrayAnswerEasyGeographicalTopicD = {"Mặt trời","4","Bắc Băng Dương","Châu Phi","Sông Yangtze"};
-    private static final String[] arrayEasyGeographicalTopic = {"Địa lý học là khoa học nghiên cứu về gì?","Trái đất có bao nhiêu lớp vỏ?","Đại dương nào là lớn nhất thế giới?","Châu lục nào lớn nhất thế giới?","Sông nào dài nhất thế giới?"};
-
-    private static final int[] idAnswerHardGeography = {R.id.radio_1,R.id.radio_4,R.id.radio_2,R.id.radio_4,R.id.radio_3};
-    private static final String[] arrayAnswerHardGeographicalTopicA = {"Núi Everest","Đồng bằng","Đồng bằng","Canada","Ấn Độ"};
-    private static final String[] arrayAnswerHardGeographicalTopicB = {"Núi K2","Trung du và miền núi","Trung du và miền núi","Hoa Kỳ","Hoa Kỳ"};
-    private static final String[] arrayAnswerHardGeographicalTopicC = {"Núi Kangchenjunga","Đồi núi","Đồi núi","Trung Quốc","Trung Quốc"};
-    private static final String[] arrayAnswerHardGeographicalTopicD = {"Núi Lhotse","Đại dương","Đại dương","Nga","Indonesia"};
-    private static final String[] arrayHardGeographicalTopic = {"Núi nào cao nhất thế giới?","Địa hình nào chiếm phần lớn diện tích Trái Đất?","Địa hình nào chiếm phần lớn diện tích lục địa?","Quốc gia nào có diện tích lớn nhất thế giới?","Quốc gia nào có dân số đông nhất thế giới?"};
-
-    private static final int[] idAnswerEasyHistory = {R.id.radio_2,R.id.radio_2,R.id.radio_2,R.id.radio_2,R.id.radio_4};
-    private static final String[] arrayAnswerEasyHistoryTopicA = {"1938","Winston Churchill","1941-1942","7 tháng 5, 1945","Mỹ"};
-    private static final String[] arrayAnswerEasyHistoryTopicB = {"1939","Neville Chamberlain","1942-1943","8 tháng 5, 1945","Anh"};
-    private static final String[] arrayAnswerEasyHistoryTopicC = {"1940","Franklin D. Roosevelt","1943-1944","9 tháng 5, 1945","Pháp"};
-    private static final String[] arrayAnswerEasyHistoryTopicD = {"1941","Joseph Stalin","1944-1945","10 tháng 5, 1945","Đức"};
-    private static final String[] arrayEasyHistoryTopic = {"Năm nào chiến tranh thế giới thứ hai bắt đầu?","Ai là người đã ký vào Hiệp định Munich năm 1938?","Trận Stalingrad diễn ra trong khoảng thời gian nào?","Ngày nào là ngày kết thúc chiến tranh thế giới thứ hai?","Hội nghị Potsdam diễn ra ở quốc gia nào?"};
-
-    private static final int[] idAnswerHardHistory = {R.id.radio_1,R.id.radio_2,R.id.radio_2,R.id.radio_3,R.id.radio_3};
-    private static final String[] arrayAnswerHardHistoryTopicA = {"Winston Churchill, Franklin D. Roosevelt, và Joseph Stalin","1945","1944","1952","1960"};
-    private static final String[] arrayAnswerHardHistoryTopicB = {"Neville Chamberlain, Franklin D. Roosevelt, và Joseph Stalin","1946","1945","1953","1961"};
-    private static final String[] arrayAnswerHardHistoryTopicC = {"Winston Churchill, Harry S. Truman, và Joseph Stalin","1947","1946","1954","1962"};
-    private static final String[] arrayAnswerHardHistoryTopicD = {"Winston Churchill, Franklin D. Roosevelt, và Benito Mussolini","1948","1947","1955","1963"};
-    private static final String[] arrayHardHistoryTopic = {"Ai là người đã ký vào Hiệp định Yalta?","Chiến tranh lạnh bắt đầu vào năm nào?","Tổ chức Liên Hiệp Quốc được thành lập vào năm nào?","Hiệp định Genève về Việt Nam được ký vào năm nào?","Cuộc khủng hoảng tên lửa Cuba diễn ra vào năm nào?"};
-
-    private static final int[] idAnswerEasyScience = {R.id.radio_2,R.id.radio_3,R.id.radio_1,R.id.radio_2,R.id.radio_3};
-    private static final String[] arrayAnswerEasyScienceTopicA = {"7","Trái Đất","Rùa","3","Cây thông"};
-    private static final String[] arrayAnswerEasyScienceTopicB = {"8","Sao Hỏa","Voi","4","Cây sồi"};
-    private static final String[] arrayAnswerEasyScienceTopicC = {"9","Sao Kim","Cá voi","5","Cây sequoia"};
-    private static final String[] arrayAnswerEasyScienceTopicD = {"10","Sao Thổ","Chim","6","Cây cỏ voi"};
-    private static final String[] arrayEasyScienceTopic = {"Hệ mặt trời của chúng ta gồm bao nhiêu hành tinh?","Hành tinh nào gần mặt trời nhất?","Loài động vật nào có tuổi thọ lâu nhất?","Cơ thể người có bao nhiêu bộ phận chính?","Loài cây nào cao nhất thế giới?"};
-
-    private static final int[] idAnswerHardScience = {R.id.radio_1,R.id.radio_2,R.id.radio_2,R.id.radio_4,R.id.radio_1};
-    private static final String[] arrayAnswerHardScienceTopicA = {"206","Sư tử","Sao Thổ","Ánh sáng mặt trời","Ánh sáng"};
-    private static final String[] arrayAnswerHardScienceTopicB = {"207","Voi","Sao Mộc","Nước","Âm thanh"};
-    private static final String[] arrayAnswerHardScienceTopicC = {"208","Kangaroo","Sao Hải Vương","Khí CO2","Mùi"};
-    private static final String[] arrayAnswerHardScienceTopicD = {"209","Thỏ","Sao Kim","Tất cả các phương án trên","Hương vị"};
-    private static final String[] arrayHardScienceTopic = {"Cơ thể người có bao nhiêu xương?","Động vật nào không thể nhảy?","Hành tinh nào lớn nhất trong hệ mặt trời?","Cái gì giúp cây cỏ tạo ra thức ăn?","Cái gì giúp chúng ta nhìn thấy vật thể?"};
-
-
-    private int[] idAnswer;
-    private String[] arrayAnswerA;
-    private String[] arrayAnswerB;
-    private String[] arrayAnswerC;
-    private String[] arrayAnswerD;
-    private String[] arrayTopic;
-
+    private static final int EASY = 0;
+    private static final int HARD = 1;
+    private List<Question> questions;
+    private TextView textView;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton1;
+    private RadioButton radioButton2;
+    private RadioButton radioButton3;
+    private RadioButton radioButton4;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
-        Intent intent = getIntent();
-        int position =intent.getIntExtra("keyPosition",-1);
-        int level = intent.getIntExtra("keyLevel",-1);
-        TextView textView = findViewById(R.id.textview);
-        RadioGroup radioGroup = findViewById(R.id.radio_group);
-        RadioButton radioButton1 =findViewById(R.id.radio_1);
-        RadioButton radioButton2 =findViewById(R.id.radio_2);
-        RadioButton radioButton3 =findViewById(R.id.radio_3);
-        RadioButton radioButton4 =findViewById(R.id.radio_4);
-        if(level == 0){
-            if(position == 0){
-                idAnswer = idAnswerEasyHistory;
-                arrayAnswerA = arrayAnswerEasyHistoryTopicA;
-                arrayAnswerB = arrayAnswerEasyHistoryTopicB;
-                arrayAnswerC = arrayAnswerEasyHistoryTopicC;
-                arrayAnswerD = arrayAnswerEasyHistoryTopicD;
-                arrayTopic = arrayEasyHistoryTopic;
-            }
-            else if(position == 1){
-                idAnswer = idAnswerEasyGeography;
-                arrayAnswerA = arrayAnswerEasyGeographicalTopicA;
-                arrayAnswerB = arrayAnswerEasyGeographicalTopicB;
-                arrayAnswerC = arrayAnswerEasyGeographicalTopicC;
-                arrayAnswerD = arrayAnswerEasyGeographicalTopicD;
-                arrayTopic = arrayEasyGeographicalTopic;
-            }
-            else if(position == 2){
-                idAnswer = idAnswerEasyScience;
-                arrayAnswerA = arrayAnswerEasyScienceTopicA;
-                arrayAnswerB = arrayAnswerEasyScienceTopicB;
-                arrayAnswerC = arrayAnswerEasyScienceTopicC;
-                arrayAnswerD = arrayAnswerEasyScienceTopicD;
-                arrayTopic = arrayEasyScienceTopic;
-            }
-        }
-        if(level == 1){
-            if(position == 0){
-                idAnswer = idAnswerHardHistory;
-                arrayAnswerA = arrayAnswerHardHistoryTopicA;
-                arrayAnswerB = arrayAnswerHardHistoryTopicB;
-                arrayAnswerC = arrayAnswerHardHistoryTopicC;
-                arrayAnswerD = arrayAnswerHardHistoryTopicD;
-                arrayTopic = arrayHardHistoryTopic;
-            }
-            else if(position == 1){
-                idAnswer = idAnswerHardGeography;
-                arrayAnswerA = arrayAnswerHardGeographicalTopicA;
-                arrayAnswerB = arrayAnswerHardGeographicalTopicB;
-                arrayAnswerC = arrayAnswerHardGeographicalTopicC;
-                arrayAnswerD = arrayAnswerHardGeographicalTopicD;
-                arrayTopic = arrayHardGeographicalTopic;
-            }
-            else if(position == 2){
-                idAnswer = idAnswerHardScience;
-                arrayAnswerA = arrayAnswerHardScienceTopicA;
-                arrayAnswerB = arrayAnswerHardScienceTopicB;
-                arrayAnswerC = arrayAnswerHardScienceTopicC;
-                arrayAnswerD = arrayAnswerHardScienceTopicD;
-                arrayTopic = arrayHardScienceTopic;
-            }
-        }
-        textView.setText(arrayTopic[0]);
-        radioButton1.setText(arrayAnswerA[0]);
-        radioButton2.setText(arrayAnswerB[0]);
-        radioButton3.setText(arrayAnswerC[0]);
-        radioButton4.setText(arrayAnswerD[0]);
+
+        textView = findViewById(R.id.textview);
+        radioGroup = findViewById(R.id.radio_group);
+        radioButton1 = findViewById(R.id.radio_1);
+        radioButton2 = findViewById(R.id.radio_2);
+        radioButton3 = findViewById(R.id.radio_3);
+        radioButton4 = findViewById(R.id.radio_4);
+
+        int position = getIntent().getIntExtra("keyPosition", -1);
+        int level = getIntent().getIntExtra("keyLevel", -1);
+        initializeQuestions(position, level);
+
+        Collections.shuffle(questions);
+
+
+        setQuestionContent();
+
         Button button = findViewById(R.id.button_answer);
         Intent intent1 = new Intent(this, MainActivity10.class);
-        intent1.putExtra("keyPosition",position);
-        intent1.putExtra("keyLevel",level);
+        intent1.putExtra("keyPosition", position);
+        intent1.putExtra("keyLevel", level);
+
         button.setOnClickListener(v -> {
             int id = radioGroup.getCheckedRadioButtonId();
+
             if (id == -1) {
                 Toast.makeText(MainActivity4.this, "Vui lòng chọn đáp án.", Toast.LENGTH_SHORT).show();
                 return;
             }
-            if(id == idAnswer[index]){
+            if (id == questions.get(index).getCorrectAnswerId()) {
+
                 index++;
-                if(index == 5){
-                    intent1.putExtra("keyScore",index);
+                if (index == questions.size()) {
+                    intent1.putExtra("keyScore", index);
                     startActivity(intent1);
                     return;
                 }
-                textView.setText(arrayTopic[index]);
-                radioButton1.setText(arrayAnswerA[index]);
-                radioButton2.setText(arrayAnswerB[index]);
-                radioButton3.setText(arrayAnswerC[index]);
-                radioButton4.setText(arrayAnswerD[index]);
-            }
-            else{
-                intent1.putExtra("keyScore",index);
+                setQuestionContent();
+            } else {
+                intent1.putExtra("keyScore", index);
                 startActivity(intent1);
             }
             radioGroup.clearCheck();
         });
     }
+
+    private void initializeQuestions(int position, int level) {
+        questions = new ArrayList<>();
+        if (level == HARD) {
+            if (position == 0) {
+                questions.add(new Question("Chiến tranh lạnh bắt đầu vào năm nào?",
+                        "1945", "1946", "1947", "1948", R.id.radio_2));
+                questions.add(new Question("Tổ chức Liên Hiệp Quốc được thành lập vào năm nào?",
+                        "1944", "1945", "1946", "1947", R.id.radio_3));
+                questions.add(new Question("Năm nào chiến tranh thế giới thứ hai bắt đầu?",
+                        "1938", "1939", "1940", "1941",R.id.radio_2));
+                questions.add(new Question("Năm nào Liên Xô được thành lập?",
+                        "1917", "1918", "1919", "1930", R.id.radio_4));
+                questions.add(new Question("Ngày nào là ngày sụp đổ của Bức tường Berlin?",
+                        "9 tháng 11, 1989", " 9 tháng 11, 1990", " 9 tháng 12, 1989", " 9 tháng 12, 1990", R.id.radio_1));
+            } else if (position == 1) {
+                questions.add(new Question("Địa hình nào chiếm phần lớn diện tích Trái Đất?",
+                        "Đồng bằng", "Trung du và miền núi", "Đồi núi", "Đại dương", R.id.radio_2));
+                questions.add(new Question("Việt Nam nằm trong vành đai khí hậu nào?",
+                        "Khí hậu nhiệt đới gió mùa", "Khí hậu cận nhiệt đới gió mùa", "Khí hậu ôn đới gió mùa", "Khí hậu hàn đới gió mùa", R.id.radio_1));
+                questions.add(new Question("Quốc gia nào có diện tích nhỏ nhất thế giới?",
+                        "Nauru", "Monaco", "Vatican", "Tuvalu", R.id.radio_3));
+                questions.add(new Question("Thủ đô của nước Mỹ là?",
+                        "Chicago", "New York", "Los Angeles", "Washington, D.C.", R.id.radio_4));
+                questions.add(new Question("Nhóm đất nào sau đây có diện tích phân bố rộng nhất ở nước ta?",
+                        "Đất feralit đỏ vàng", "Đất phù sa sông ngòi", "Đất đen", "Đất xám bạc màu", R.id.radio_2));
+
+            } else if (position == 2) {
+                questions.add(new Question("Động vật nào không thể nhảy?",
+                        "Sư tử", "Voi", "Kangaroo", "Thỏ", R.id.radio_2));
+                questions.add(new Question("Hành tinh nào lớn nhất trong hệ mặt trời?",
+                        "Sao Thổ", "Sao Mộc", "Sao Hải Vương", "Sao Kim", R.id.radio_3));
+                questions.add(new Question("Vật chất được cấu tạo bởi gì?",
+                        "Phân tử", "Nguyên tử", "Electron", "Proton",R.id.radio_2 ));
+                questions.add(new Question(" Công thức hóa học của nước là gì?",
+                        "CO2", "O2", "H20", "N2", R.id.radio_3));
+                questions.add(new Question("Trái đất quay quanh mặt trời theo hình gì?",
+                        "Hình vuông", "Hình tròn", "Hình elip", "Hình tam giác", R.id.radio_3));
+            }
+        } else if (level == EASY){
+            if(position==0){
+                questions.add(new Question("Cuộc khủng hoảng tên lửa Cuba diễn ra vào năm?",
+                        "1960", "1961", "1962", "1963", R.id.radio_3));
+                questions.add(new Question("Hiệp định Giơ-ne-vơ được ký kết vào năm nào?",
+                        "1954", "1955", "1956", "1957", R.id.radio_1));
+                questions.add(new Question("Quốc gia đầu tiên trên thế giới là gì?",
+                        "Ai Cập", "Lưỡng Hà", "Hy Lạp cổ đại", " Trung Quốc cổ đại", R.id.radio_2));
+                questions.add(new Question("Nạn đói Việt Nam diễn ra vào năm bao nhiêu?",
+                        "1954", "1946", "1938", "1945", R.id.radio_4));
+                questions.add(new Question("Cuộc khởi nghĩa nào dưới đây đánh dấu sự chấm dứt ách đô hộ của nhà Minh ở Việt Nam?",
+                        "Khởi nghĩa Lam Sơn", "Khởi nghĩa Tây Sơn", "Khởi nghĩa Cần Vương", "Khởi nghĩa Yên Bái", R.id.radio_1));
+            }else if (position==1){
+                questions.add(new Question("Quốc gia nào có diện tích lớn nhất thế giới?",
+                        "Canada", "Hoa Kỳ", "Trung Quốc", "Nga", R.id.radio_4));
+                questions.add(new Question("Sông nào dài nhất thế giới?",
+                        "Sông Amazon", "Sông Nile", "Sông Mississippi", "Sông Yangtze", R.id.radio_2));
+                questions.add(new Question("Thành phố nào là thủ đô của Việt Nam?",
+                        "Hà Nội", "Hồ Chí Minh", "Đà Nẵng", "Cần Thơ", R.id.radio_1));
+                questions.add(new Question("Địa hình nào chiếm phần lớn diện tích Thành phố Hồ Chí Minh?",
+                        "Đồng bằng", "Trung du và miền núi", "Đồi núi", "Đồng cỏ", R.id.radio_1));
+                questions.add(new Question("Sông nào dài nhất Việt Nam?",
+                        "Sông Đồng Nai", "Sông Cửu Long", "Sông Hồng", "Sông Mã", R.id.radio_3));
+            }else if (position==2){
+                questions.add(new Question("Cái gì giúp cây cỏ tạo ra thức ăn?",
+                        "Ánh sáng mặt trời", "Nước", "Khí CO2", "Tất cả các phương án trên", R.id.radio_4));
+                questions.add(new Question("Cái gì giúp chúng ta nhìn thấy vật thể?",
+                        "Ánh sáng", "Âm thanh", "Mùi", "Hương vị", R.id.radio_1));
+                questions.add(new Question("Động vật nào có thể sống dưới nước và trên cạn?",
+                        "Cá", "Chim", "Ếch", "Sư tử", R.id.radio_3));
+                questions.add(new Question("Cái gì giúp chúng ta nghe được âm thanh?",
+                        "Mắt", "Tai", "Mũi", "Miệng", R.id.radio_2));
+                questions.add(new Question("Động vật nào có thể thay đổi màu sắc để ngụy trang?",
+                        "Báo", "Bướm", "Tắc kè", "Cá heo", R.id.radio_3));
+            }
+        }
+    }
+    private void setQuestionContent() {
+        Question currentQuestion = questions.get(index);
+        textView.setText(currentQuestion.getQuestion());
+        radioButton1.setText(currentQuestion.getAnswerA());
+        radioButton2.setText(currentQuestion.getAnswerB());
+        radioButton3.setText(currentQuestion.getAnswerC());
+        radioButton4.setText(currentQuestion.getAnswerD());
+    }
+
 }
+
+
+
